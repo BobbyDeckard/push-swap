@@ -25,7 +25,7 @@ int	check_arg_validity(char *str)
 	return (1);
 }
 
-int	check_duplicates(t_stack *stack, unsigned int id)
+int	check_duplicates(t_stack *stack, int id)
 {
 	t_stack	dup;
 
@@ -43,11 +43,13 @@ int	check_duplicates(t_stack *stack, unsigned int id)
 	return (0);
 }
 
-int	end_program_a_stack(t_stack *stack, unsigned int id)
+int	end_program_a_stack(t_stack *stack, int id)
 {
-	t_stack			*ptr;
-	unsigned int	iterations;
+	t_stack	*ptr;
+	int		iterations;
 
+	ptr = NULL;
+	(void) ptr;
 	iterations = -1;
 	while (++iterations < id)
 	{
@@ -60,10 +62,13 @@ int	end_program_a_stack(t_stack *stack, unsigned int id)
 	return (print_error());
 }
 
-int	fill_stack(t_stack *stack, char *str, unsigned int id)
+int	fill_stack(t_stack *stack, char *str, int id)
 {
 	if (!stack)
 		stack = (t_stack *) malloc(sizeof(t_stack));
 	if (!stack)
 		return (0);
+	(void) str;
+	(void) id;
+	return (1);
 }

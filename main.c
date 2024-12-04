@@ -14,12 +14,14 @@
 
 int	main(int ac, char **av)
 {
-	unsigned int	a_id;
-	t_stack			*a_stack;
+	int		a_id;
+	t_stack	*a_stack;
 
+	ft_printf("Makefile works!\n");
 	if (ac == 1)
 		return (0);
 	a_id = 0;
+	a_stack = NULL;
 	while (a_id + 1 < ac)
 	{
 		if (check_arg_validity(av[a_id + 1])

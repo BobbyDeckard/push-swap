@@ -16,7 +16,8 @@ CFLAGS = -Wextra -Wall -Werror
 RM = rm
 RMFLAGS = -f
 SRCS = main.c \
-	   srcs/utils.c
+	   srcs/utils.c \
+	   srcs/utils2.c
 OBJS = $(SRCS:.c=.o)
 HEADERS = incl/push_swap.h
 LIBRARY = srcs/libft/libft.a
@@ -25,8 +26,7 @@ MAKE = make
 all: $(LIBRARY) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBRARY) $?
-	cp $(LIBRARY) $(NAME)
+	$(CC) $(CFLAGS) $? $(LIBRARY) -o $(NAME)
 
 %.o: %.c $(HEADERS) $(LIBRARY)
 	$(CC) $(CFLAGS) -c $< -o $@
