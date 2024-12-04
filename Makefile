@@ -17,8 +17,8 @@ RM = rm
 RMFLAGS = -f
 SRCS =
 OBJS = $(SRCS:.c=.o)
-HEADERS = push_swap.h
-LIBRARY = libft/libft.a
+HEADERS = incl/push_swap.h
+LIBRARY = srcs/libft/libft.a
 MAKE = make
 
 all: $(LIBRARY) $(NAME)
@@ -31,15 +31,15 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBRARY):
-	cd libft && $(MAKE)
+	cd srcs/libft && $(MAKE)
 
 clean:
 	$(RM) $(RMFLAGS) $(OBJS)
-	cd libft && $(MAKE) clean
+	cd srcs/libft && $(MAKE) clean
 
 fclean: clean
 	$(RM) $(RMFLAGS) $(NAME)
-	cd libft && $(MAKE) fclean
+	cd srcs/libft && $(MAKE) fclean
 
 re: fclean all
 
