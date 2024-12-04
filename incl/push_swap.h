@@ -26,6 +26,6 @@ typedef struct s_stack
 	unsigned int	id;
 	t_stack			*next;
 	t_stack			*previous;
-}	t_stack
+}	t_stack;
 
 #endif
