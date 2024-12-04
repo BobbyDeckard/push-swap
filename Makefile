@@ -15,7 +15,8 @@ CC = cc
 CFLAGS = -Wextra -Wall -Werror
 RM = rm
 RMFLAGS = -f
-SRCS =
+SRCS = main.c \
+	   srcs/utils.c
 OBJS = $(SRCS:.c=.o)
 HEADERS = incl/push_swap.h
 LIBRARY = srcs/libft/libft.a

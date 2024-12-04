@@ -12,7 +12,13 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft/libft.h"
+# include "../srcs/libft/libft.h"
+
+int	check_arg_validity(char *str);
+int	check_duplicates(t_stack *stack, unsigned int id);
+int	end_program_a_stack(t_stack *stack, unsigned int id);
+int	fill_stack(t_stack *stack, char *str, unsigned int id);
+int	print_error(void);
 
 typedef struct s_stack
 {
