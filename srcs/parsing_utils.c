@@ -6,13 +6,13 @@
 /*   By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:41:56 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 14:14:50 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:21:34 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-t_stack	*new_node(int content)
+t_stack	*new_node(int content, int fill, int id)
 {
 	t_stack	*new;
 
@@ -20,6 +20,7 @@ t_stack	*new_node(int content)
 	if (!new)
 		return (NULL);
 	new->content = content;
+	new->fill = fill;
 	new->next = NULL;
 	new->previous = NULL;
 	return (new);
@@ -62,7 +63,7 @@ t_stack	*parse_args(int ac, char **av)
 	if (!list)
 		return (NULL);
 	if (check_arg_validity(av[1]))
-		*list = new_node(ft_atoi(av[1]));
+		*list = new_node(ft_atoi(av[1]), 1, 0);
 	else
 		return (print_error());
 	arg = 1;
@@ -70,7 +71,7 @@ t_stack	*parse_args(int ac, char **av)
 	while (++arg < ac)
 	{
 		if (check_arg_validity(av[arg]))
-			check += add_node_back(list, new_node(ft_atoi(av[arg])), arg - 1);
+			check += add_node_back(list, new_node(ft_atoi(av[arg]), 1, arg - 1), arg - 1);
 		else
 			return (print_error());
 	}

@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 14:15:05 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:03:55 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ t_stack	*init_stack(int ac)
 	list = (t_stack **) malloc(sizeof(t_stack *));
 	if (!list)
 		return (NULL);
-	stack = new_node(0);
+	stack = new_node(0, 0, 0);
 	*list = stack;
 	iters = 1;
 	check = 0;
 	while (++iters < ac)
-		check += add_node_back(list, new_node(0), iters - 1);
+		check += add_node_back(list, new_node(0, 0, iters - 1), iters - 1);
 	if (check + 2 != ac)
 	{
 		ft_printf("Failed check init_stack\n");
