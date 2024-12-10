@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:45:04 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:15:05 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,30 @@ int	check_duplicates(t_stack *stack, int args)
 		stack = stack->next;
 	}
 	return (0);
+}
+
+t_stack	*init_stack(int ac)
+{
+	t_stack	**list;
+	t_stack	*stack;
+	int		iters;
+	int		check;
+
+	list = (t_stack **) malloc(sizeof(t_stack *));
+	if (!list)
+		return (NULL);
+	stack = new_node(0);
+	*list = stack;
+	iters = 1;
+	check = 0;
+	while (++iters < ac)
+		check += add_node_back(list, new_node(0), iters - 1);
+	if (check + 2 != ac)
+	{
+		ft_printf("Failed check init_stack\n");
+		return (NULL);
+	}
+	return (stack);
 }
 
 //maybe dogshit

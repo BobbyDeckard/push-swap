@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:41:56 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:51:46 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:14:50 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ t_stack	*parse_args(int ac, char **av)
 		else
 			return (print_error());
 	}
-	if (check + 3 != arg)
+	if (check + 2 != arg)
+	{
+		ft_printf("Failed check parse_args\n");
 		return (NULL);
+	}
 	return (*list);
 }

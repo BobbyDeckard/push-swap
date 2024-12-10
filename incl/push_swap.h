@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:52:33 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:34:43 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:11:51 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int	add_node_back(t_stack **stack, t_stack *new, int args);
 int	check_arg_validity(char *str);
 int	check_duplicates(t_stack *stack, int args);
 t_stack	*end_program_a_stack(t_stack *stack, int args);
-t_stack	*print_error(void);
+t_stack	*init_stack(int ac);
 t_stack	*last_node(t_stack *stack, int args);
 t_stack	*new_node(int content);
 t_stack	*parse_args(int ac, char **av);
+t_stack	*print_error(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/29 11:52:28 by imeulema          #+#    #+#              #
-#    Updated: 2024/12/10 11:32:17 by imeulema         ###   ########.fr        #
+#    Updated: 2024/12/10 14:13:09 by imeulema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm
 RMFLAGS = -f
 SRCS = main.c \
 	   srcs/utils.c \
-	   srcs/utils2.c
+	   srcs/parsing_utils.c
 OBJS = $(SRCS:.c=.o)
 HEADERS = incl/push_swap.h
 LIBRARY = srcs/libft/libft.a
