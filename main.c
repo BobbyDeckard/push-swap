@@ -25,6 +25,7 @@ void	print_stack(t_stack *stack)
 		copy = copy->next;
 		node++;
 	}
+	ft_printf("\n");
 }
 
 int	main(int ac, char **av)
@@ -36,8 +37,11 @@ int	main(int ac, char **av)
 		return (1);
 	a_stack = parse_args(ac, av);
 	b_stack = NULL;
+	(void) b_stack;
 	if (!a_stack)
 		return (1);
+	print_stack(a_stack);
+	ra(&a_stack);
 	print_stack(a_stack);
 	return (0);
 }

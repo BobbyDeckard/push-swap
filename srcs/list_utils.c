@@ -23,7 +23,7 @@ void	del_first(t_stack **list)
 
 	del = *list;
 	*list = del->next;
-	(del->next)->previous = del->previous;
+	(*list)->previous = NULL;
 	free(del);
 }
 

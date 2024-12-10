@@ -16,8 +16,13 @@ CFLAGS = -Wextra -Wall -Werror -g
 RM = rm
 RMFLAGS = -f
 SRCS = main.c \
-	   srcs/utils.c \
-	   srcs/parsing_utils.c
+       srcs/list_utils.c \
+       srcs/parsing_utils.c \
+       srcs/push.c \
+       srcs/reverse.c \
+       srcs/rotate.c \
+       srcs/swap.c \
+       srcs/utils.c
 OBJS = $(SRCS:.c=.o)
 HEADERS = incl/push_swap.h
 LIBRARY = srcs/libft/libft.a

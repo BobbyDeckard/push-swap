@@ -22,5 +22,20 @@ void	swap(t_stack **list)
 	temp->previous = *list;
 	(*list)->previous = NULL;
 	(*list)->next = temp;
-	return ;
+}
+
+void	sa(t_stack **a_stack)
+{
+	swap(a_stack);
+}
+
+void	sb(t_stack **b_stack)
+{
+	swap(b_stack);
+}
+
+void	ss(t_stack **a_stack, t_stack **b_stack)
+{
+	swap(a_stack);
+	swap(b_stack);
 }

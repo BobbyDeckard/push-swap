@@ -18,8 +18,18 @@ void	rotate(t_stack **list)
 	del_first(list);
 }
 
-void	reverse_rotate(t_stack **list)
+void	ra(t_stack **a_stack)
 {
-	add_front(list, last_node(*list));
-	del_last(*list);
+	rotate(a_stack);
+}
+
+void	rb(t_stack **b_stack)
+{
+	rotate(b_stack);
+}
+
+void	rr(t_stack **a_stack, t_stack **b_stack)
+{
+	rotate(a_stack);
+	rotate(b_stack);
 }
