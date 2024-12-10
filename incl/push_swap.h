@@ -17,15 +17,17 @@
 typedef struct s_stack
 {
 	int				content;
-	int				id;
 	struct s_stack	*next;
 	struct s_stack	*previous;
 }	t_stack;
 
+int	add_node_back(t_stack **stack, t_stack *new, int args);
 int	check_arg_validity(char *str);
-int	check_duplicates(t_stack *stack, int id);
-int	end_program_a_stack(t_stack *stack, int id);
-int	fill_stack(t_stack *stack, char *str, int id);
+int	check_duplicates(t_stack *stack, int args);
+int	end_program_a_stack(t_stack *stack, int args);
+int	fill_stack(t_stack **stack, char *str, int args);
 int	print_error(void);
+t_stack	*last_node(t_stack **stack, int args);
+t_stack	*new_node(int content);
 
 #endif

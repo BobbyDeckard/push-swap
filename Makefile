@@ -12,7 +12,7 @@
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -g
 RM = rm
 RMFLAGS = -f
 SRCS = main.c \

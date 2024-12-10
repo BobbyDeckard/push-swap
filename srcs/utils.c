@@ -19,56 +19,57 @@ int	check_arg_validity(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] < 48 && str[i] > 57)
+		if (str[i] < 48 || str[i] > 57)
 			return (0);
 	}
 	return (1);
 }
 
-int	check_duplicates(t_stack *stack, int id)
+int	check_duplicates(t_stack *stack, int args)
 {
-	t_stack	dup;
+	t_stack	*ptr;
+	int	full_iters;
+	int	inter_iters;
 
-	while (stack->id + 1 < id)
+	full_iters = 0;
+	while (++full_iters < args)
 	{
-		dup = *(stack->next);
-		while (dup.id < id)
+		if (stack->next)
+			ptr = stack->next;
+		inter_iters = full_iters;
+		while (++inter_iters < args)
 		{
-			if (dup.content == stack->content)
+			if (ptr->content == stack->content)
 				return (1);
-			dup = *(dup.next);
+			if (ptr->next)
+				ptr = ptr->next;
 		}
 		stack = stack->next;
 	}
 	return (0);
 }
 
-int	end_program_a_stack(t_stack *stack, int id)
+int	end_program_a_stack(t_stack *stack, int args)
 {
 	t_stack	*ptr;
-	int		iterations;
+	int		iters;
 
-	ptr = NULL;
-	(void) ptr;
-	iterations = -1;
-	while (++iterations < id)
+	iters = -1;
+	while (++iters < args)
 	{
-		if (stack->next)
-			ptr = stack->next;
+		ptr = stack->next;
 		stack->previous = NULL;
 		stack->next = NULL;
 		free(stack);
+		stack = ptr;
 	}
 	return (print_error());
 }
 
-int	fill_stack(t_stack *stack, char *str, int id)
+int	fill_stack(t_stack **stack, char *str, int args)
 {
-	if (!stack)
-		stack = (t_stack *) malloc(sizeof(t_stack));
-	if (!stack)
+	if (add_node_back(stack, new_node(ft_atoi(str)), args))
+		return (1);
+	else
 		return (0);
-	(void) str;
-	(void) id;
-	return (1);
 }
