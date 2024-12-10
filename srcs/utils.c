@@ -57,11 +57,10 @@ int	check_duplicates(int ac, char **av)
 
 int	check_validity(int ac, char **av)
 {
-	int	validity;
+	int	check;
 
-	validity = check_args(ac, av);
-	validity += check_duplicates(ac, av);
-	if (validity > 0)
+	check = check_args(ac, av) + check_duplicates(ac, av);
+	if (check > 0)
 		ft_putstr_fd("Error", 2);
-	return (validity);
+	return (check);
 }

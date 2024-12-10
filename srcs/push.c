@@ -16,7 +16,7 @@ void	push(t_stack **a_stack, t_stack **b_stack)
 {
 	if (!b_stack || !*b_stack)
 		return ;
-	//lstadd_front sur a
-	//lstdelone sur b ?
+	add_front(a_stack, *b_stack);
+	del_first(b_stack);
 	return ;
 }

@@ -14,14 +14,12 @@
 
 void	rotate(t_stack **list)
 {
-	// lstadd_back 1er element
-	// lstdelone 1er element
-	// *list = 2eme element
+	add_back(list, *list);
+	del_first(list);
 }
 
 void	reverse_rotate(t_stack **list)
 {
-	// lstadd_front dernier element
-	// lstdelone dernier element
-	// *list = dernier (nouveau premier) element
+	add_front(list, last_node(*list));
+	del_last(*list);
 }

@@ -21,10 +21,14 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }	t_stack;
 
-int	add_node_back(t_stack **stack, t_stack *new);
 int	check_args(int ac, char **av);
 int	check_duplicates(int ac, char **av);
 int	check_validity(int ac, char **av);
+int	parse_add_back(t_stack **stack, t_stack *new);
+void	add_back(t_stack **list, t_stack *new);
+void	add_front(t_stack **list, t_stack *new);
+void	del_first(t_stack **list);
+void	del_last(t_stack *stack);
 t_stack	*last_node(t_stack *stack);
 t_stack	*new_node(int content);
 t_stack	*parse_args(int ac, char **av);

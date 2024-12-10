@@ -32,15 +32,13 @@ t_stack	*last_node(t_stack *stack)
 	return (stack);
 }
 
-int	add_node_back(t_stack **stack, t_stack *new)
+int	parse_add_back(t_stack **list, t_stack *new)
 {
 	t_stack	*last;
 
 	if (!new)
 		return (0);
-	ft_printf("Stack address: %p\n", stack);
-	last = last_node(*stack);
-	ft_printf("Stack address: %p\n", stack);
+	last = last_node(*list);
 	last->next = new;
 	new->previous = last;
 	return (1);
@@ -59,7 +57,7 @@ t_stack	*parse_args(int ac, char **av)
 	arg = 1;
 	check = 0;
 	while (++arg < ac)
-		check += add_node_back(list, new_node(ft_atoi(av[arg])));
+		check += parse_add_back(list, new_node(ft_atoi(av[arg])));
 	if (check + 2 != arg)
 	{
 		ft_printf("Failed check parse_args\n");
