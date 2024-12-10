@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:48:53 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:21:57 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:44:43 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (1);
 	a_stack = parse_args(ac, av);
+	if (!a_stack)
+		return (1);
 	print_stack(a_stack, ac - 1);
 	return (0);
 }

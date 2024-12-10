@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:41:09 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:45:04 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,4 @@ t_stack	*end_program_a_stack(t_stack *stack, int args)
 		stack = ptr;
 	}
 	return (print_error());
-}
-
-t_stack	*parse_args(int ac, char **av)
-{
-	t_stack	**list;
-	int		arg;
-
-	list = (t_stack **) malloc(sizeof(t_stack *));
-	if (!list)
-		return (NULL);
-	*list = new_node(ft_atoi(av[1]));
-	ft_printf("Created first node:\n\tContent = %d\n\tAddress: %p\n", (*list)->content, *list);
-	arg = 1;
-	while (++arg < ac)
-	{
-		if (check_arg_validity(av[arg]))
-			add_node_back(list, new_node(ft_atoi(av[arg])), arg - 1);
-		else
-			return (end_program_a_stack(*list, arg));
-	}
-	return (*list);
 }
