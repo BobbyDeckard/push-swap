@@ -6,93 +6,62 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 15:03:55 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:48:26 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int	check_arg_validity(char *str)
+int	check_args(int ac, char **av)
 {
-	unsigned int	i;
+	int	index;
+	int	arg;
 
-	i = -1;
-	while (str[++i])
+	arg = 0;
+	while (++arg < ac)
 	{
-		if (str[i] < 48 || str[i] > 57)
-			return (0);
-	}
-	return (1);
-}
-
-t_stack	*print_error(void)
-{
-	ft_putstr_fd("Error", 2);
-	return (NULL);
-}
-
-int	check_duplicates(t_stack *stack, int args)
-{
-	t_stack	*ptr;
-	int	full_iters;
-	int	inter_iters;
-
-	full_iters = 0;
-	while (++full_iters < args)
-	{
-		if (stack->next)
-			ptr = stack->next;
-		inter_iters = full_iters;
-		while (++inter_iters < args)
+		index = -1;
+		while (av[arg][++index])
 		{
-			if (ptr->content == stack->content)
+			if (av[arg][index] < 48 || av[arg][index] > 57)
 				return (1);
-			if (ptr->next)
-				ptr = ptr->next;
 		}
-		stack = stack->next;
 	}
 	return (0);
 }
 
-t_stack	*init_stack(int ac)
+int	check_duplicates(int ac, char **av)
 {
-	t_stack	**list;
-	t_stack	*stack;
-	int		iters;
-	int		check;
+	int	*args;
+	int	index;
+	int	comp_index;
 
-	list = (t_stack **) malloc(sizeof(t_stack *));
-	if (!list)
-		return (NULL);
-	stack = new_node(0, 0, 0);
-	*list = stack;
-	iters = 1;
-	check = 0;
-	while (++iters < ac)
-		check += add_node_back(list, new_node(0, 0, iters - 1), iters - 1);
-	if (check + 2 != ac)
+	args = (int *) malloc((ac - 1) * sizeof(int));
+	if (!args) // could maybe generate an error with correct input...
+		return (1);
+	index = -1;
+	while (++index + 1 < ac)
+		args[index] = ft_atoi(av[index + 1]);
+	index = -1;
+	while (++index + 2 < ac)
 	{
-		ft_printf("Failed check init_stack\n");
-		return (NULL);
+		comp_index = index;
+		while (++comp_index + 1 < ac)
+		{
+			if (args[index] == args[comp_index])
+				return (1);
+		}
 	}
-	return (stack);
+	return (0);
 }
 
-//maybe dogshit
-t_stack	*end_program_a_stack(t_stack *stack, int args)
+int	check_validity(int ac, char **av)
 {
-	t_stack	*ptr;
-	int		iters;
+	int	validity;
 
-	iters = -1;
-	while (++iters < args)
-	{
-		ptr = stack->next;
-		stack->previous = NULL;
-		stack->next = NULL;
-		free(stack);
-		stack = ptr;
-	}
-	return (print_error());
+	validity = check_args(ac, av);
+	validity += check_duplicates(ac, av);
+	if (validity > 0)
+		ft_putstr_fd("Error", 2);
+	return (validity);
 }

@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:48:53 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 16:04:35 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:47:18 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ void	print_stack(t_stack *stack)
 int	main(int ac, char **av)
 {	
 	t_stack	*a_stack;
-	t_stack	*b_stack;
 
-	if (ac == 1)
+	if (ac == 1 || check_validity(ac, av))
 		return (1);
 	a_stack = parse_args(ac, av);
-	if (!a_stack || !b_stack)
+	if (!a_stack)
 		return (1);
 	print_stack(a_stack);
 	return (0);
