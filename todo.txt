@@ -1,2 +1,3 @@
 Check errors on parsing
 Make sure program quits properly (without leaks) when an error occurs
+Adapt structure to null-termination
