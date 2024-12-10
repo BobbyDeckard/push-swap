@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:41:56 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 16:46:13 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:08:22 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ t_stack	*new_node(int content)
 
 t_stack	*last_node(t_stack *stack)
 {
-	t_stack	*ptr;
-
-	ptr = stack;
-	while (ptr->next)
-		ptr = ptr->next;
-	return (ptr);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
 
 int	add_node_back(t_stack **stack, t_stack *new)
@@ -41,7 +38,9 @@ int	add_node_back(t_stack **stack, t_stack *new)
 
 	if (!new)
 		return (0);
+	ft_printf("Stack address: %p\n", stack);
 	last = last_node(*stack);
+	ft_printf("Stack address: %p\n", stack);
 	last->next = new;
 	new->previous = last;
 	return (1);

@@ -1,4 +1,8 @@
 Check errors on parsing
 Make sure program quits properly (without leaks) when an error occurs
+
 Check differences between simple and double pointers on structs (eg: in last_node, is it really necessary to make a temporay pointer?)
+-->
+So, don't need to make subsidiary pointers inside a function, makes sense as the pointer's scope is limited to the function in which it is called
+
 Find a way to ensure no argument bigger than an int gets treated
