@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/04 11:52:06 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:38:34 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	check_duplicates(t_stack *stack, int args)
 	return (0);
 }
 
-int	end_program_a_stack(t_stack *stack, int args)
+//maybe dogshit
+t_stack	*end_program_a_stack(t_stack *stack, int args)
 {
 	t_stack	*ptr;
 	int		iters;
@@ -66,10 +67,23 @@ int	end_program_a_stack(t_stack *stack, int args)
 	return (print_error());
 }
 
-int	fill_stack(t_stack **stack, char *str, int args)
+t_stack	*parse_args(int ac, char **av)
 {
-	if (add_node_back(stack, new_node(ft_atoi(str)), args))
-		return (1);
-	else
-		return (0);
+	t_stack	**list;
+	int		arg;
+
+	list = (t_stack **) malloc(sizeof(t_stack *));
+	if (!list)
+		return (NULL);
+	*list = new_node(ft_atoi(av[1]));
+	ft_printf("Created first node:\n\tContent = %d\n\tAddress: %p\n", (*list)->content, *list);
+	arg = 1;
+	while (++arg < ac)
+	{
+		if (check_arg_validity(av[arg]))
+			add_node_back(list, new_node(ft_atoi(av[arg])), arg - 1);
+		else
+			return (end_program_a_stack(*list, arg));
+	}
+	return (*list);
 }

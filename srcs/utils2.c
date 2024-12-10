@@ -6,16 +6,16 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 12:14:50 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 12:23:59 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:35:19 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
 
-int	print_error(void)
+t_stack	*print_error(void)
 {
 	ft_putstr_fd("Error", 2);
-	return (0);
+	return (NULL);
 }
 
 t_stack	*new_node(int content)
@@ -31,33 +31,33 @@ t_stack	*new_node(int content)
 	return (new);
 }
 
-t_stack	*last_node(t_stack **stack, int args)
+t_stack	*last_node(t_stack *stack, int args)
 {
-	int	iters;
-
+	int		iters;
+	t_stack	*ptr;
 
 	if (!stack)
 		return (NULL);
 	iters = 0;
+	ptr = stack;
 	while (++iters < args)
-		*stack = (*stack)->next;
-	return (*stack);
+		ptr = ptr->next;
+	return (ptr);
 }
 
 int	add_node_back(t_stack **stack, t_stack *new, int args)
 {
 	t_stack	*last;
 
+	ft_printf("First node as given to add_back: %p\n", *stack);
 	if (!new)
 		return (0);
-	last = last_node(stack, args);
-	if (!last)
-		*stack = new;
-	else
-	{
-		last->next = new;
-		new->next = *stack;
-		new->previous = last;
-	}
+	last = last_node(*stack, args);
+	ft_printf("Created new node\n\tContent: %d\n\tAddress: %p\nLast node found: %p\n", new->content, new, last);
+	last->next = new;
+	ft_printf("Policing *stack: %p\n", *stack);
+	new->next = *stack;
+	new->previous = last;
+	ft_printf("New (%p) has been set as next for last (%p), first node (%p) set as next for new, last as previous for new\n", new, last, *stack);
 	return (1);
 }

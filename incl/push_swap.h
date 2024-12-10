@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:52:33 by imeulema          #+#    #+#             */
-/*   Updated: 2024/11/29 11:52:35 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:34:43 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ typedef struct s_stack
 int	add_node_back(t_stack **stack, t_stack *new, int args);
 int	check_arg_validity(char *str);
 int	check_duplicates(t_stack *stack, int args);
-int	end_program_a_stack(t_stack *stack, int args);
-int	fill_stack(t_stack **stack, char *str, int args);
-int	print_error(void);
-t_stack	*last_node(t_stack **stack, int args);
+t_stack	*end_program_a_stack(t_stack *stack, int args);
+t_stack	*print_error(void);
+t_stack	*last_node(t_stack *stack, int args);
 t_stack	*new_node(int content);
+t_stack	*parse_args(int ac, char **av);
 
 #endif
