@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:05 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/10 13:38:34 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:41:09 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	check_arg_validity(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+t_stack	*print_error(void)
+{
+	ft_putstr_fd("Error", 2);
+	return (NULL);
 }
 
 int	check_duplicates(t_stack *stack, int args)
