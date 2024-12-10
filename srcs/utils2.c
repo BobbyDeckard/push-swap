@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 12:14:50 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/04 12:14:52 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:23:59 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_stack	*last_node(t_stack **stack, int args)
 
 	if (!stack)
 		return (NULL);
-	iters = -1;
+	iters = 0;
 	while (++iters < args)
 		*stack = (*stack)->next;
 	return (*stack);

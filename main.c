@@ -6,7 +6,7 @@
 /*   By: imeulema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:48:53 by imeulema          #+#    #+#             */
-/*   Updated: 2024/12/04 09:48:57 by imeulema         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:28:35 by imeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int	main(int ac, char **av)
 	int		arg;
 	t_stack	**a_stack;
 
-	ft_printf("Makefile works!\n");
 	if (ac == 1)
-		return (0);
+		return (1);
 	arg = 1;
-	a_stack = NULL;
+	a_stack = (t_stack **) malloc(sizeof(t_stack *));
+	if (!a_stack)
+		return (1);
 	while (arg < ac)
 	{
 		if (check_arg_validity(av[arg]) && fill_stack(a_stack, av[arg], arg - 1))
@@ -41,7 +42,7 @@ int	main(int ac, char **av)
 		else
 			return (end_program_a_stack(*a_stack, arg - 1));
 	}
-	if (!check_duplicates(*a_stack, arg - 1))
+	if (check_duplicates(*a_stack, arg - 1))
 		return (end_program_a_stack(*a_stack, arg - 1));
 	print_stack(*a_stack, arg - 1);
 	return (0);
