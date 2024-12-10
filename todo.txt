@@ -1,4 +1,4 @@
 Check errors on parsing
 Make sure program quits properly (without leaks) when an error occurs
-Adapt structure to null-termination
+Check differences between simple and double pointers on structs (eg: in last_node, is it really necessary to make a temporay pointer?)
 Find a way to ensure no argument bigger than an int gets treated
